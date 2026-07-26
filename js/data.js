@@ -22,7 +22,7 @@ const portfolioData = {
             title: "Motion_Graphics",
             category: "video",
             thumb: "assets/images/profile.jpg",
-            content: `<div class="iframe-container"><iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe></div>`,
+            content: `<div class="iframe-container"><iframe src="https://player.vimeo.com/video/1213024891" allowfullscreen></iframe></div>`,
             descEn: "Logo animation and instance animations handled in After Effects.",
             descUk: "Анімація логотипів та елементів інтерфейсу в After Effects.",
             stack: "After Effects",
