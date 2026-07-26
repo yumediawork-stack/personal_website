@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yurii Shmaliuk | Creative Generalist</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Anton&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Matrix Background & Scanlines -->
+  <canvas id="matrix-bg"></canvas>
+  <div class="scanlines"></div>
+
+  <!-- Header / Navigation -->
+  <header class="retro-header">
+    <div class="logo">Yurii.exe</div>
+    <nav>
+      <button id="theme-toggle" class="terminal-btn">[ Theme: Dark ]</button>
+      <button id="lang-toggle" class="terminal-btn">[ EN ]</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero window">
+      <div class="window-header">
+        <span class="window-title">C:\System\Yurii.exe</span>
+        <div class="window-controls">
+          <span class="control close"></span>
+          <span class="control min"></span>
+          <span class="control max"></span>
+        </div>
+      </div>
+      <div class="window-content hero-layout">
+        <div class="hero-text-block">
+          <h1 class="editorial-title" data-i18n="hero_title">Yurii<br>Shmaliuk</h1>
+          <p class="terminal-text" data-i18n="hero_subtitle">> Creative Generalist transitioning from video editing into design.</p>
+          <div class="hero-actions">
+             <button id="btn-contact" class="btn primary" data-i18n="hero_cta">> Execute_Contact</button>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="assets/images/profile.jpg" alt="Yurii Shmaliuk" class="threshold-photo" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Skills Grid -->
+    <div class="grid-2-col">
+        <section class="about-section window">
+          <div class="window-header"><span class="window-title">about.txt</span></div>
+          <div class="window-content">
+             <p class="terminal-text small" id="about-text" data-i18n="about_text"></p>
+          </div>
+        </section>
+
+        <section class="skills-section window">
+          <div class="window-header"><span class="window-title">skills.sys</span></div>
+          <div class="window-content">
+             <ul class="skills-list" id="skills-list">
+                <!-- Injected via JS -->
+             </ul>
+          </div>
+        </section>
+    </div>
+
+    <!-- Experience Slider -->
+    <section class="experience" id="experience">
+      <h2 class="section-title" data-i18n="exp_title">Career_Log</h2>
+      <div class="timeline-slider" id="timeline-container">
+        <!-- Injected via JS -->
+      </div>
+      <div class="slider-hint terminal-text small" data-i18n="slider_hint">< Swipe to view ></div>
+    </section>
+
+    <!-- Portfolio / Works -->
+    <section class="portfolio" id="portfolio">
+      <h2 class="section-title" data-i18n="port_title">System.Works</h2>
+      <div class="filters" id="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">[ All ]</button>
+        <button class="filter-btn" data-filter="video">[ Video ]</button>
+        <button class="filter-btn" data-filter="design">[ Design ]</button>
+        <button class="filter-btn" data-filter="code">[ Code ]</button>
+      </div>
+      <div class="portfolio-grid" id="portfolio-grid">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="retro-footer window">
+    <div class="window-header"><span class="window-title">Network.Connections</span></div>
+    <div class="window-content contact-info">
+      <a href="mailto:yumediawork@gmail.com" class="social-link">> Email</a>
+      <a href="https://t.me/verrgill" target="_blank" class="social-link">> Telegram</a>
+      <a href="https://www.linkedin.com/in/yurii-shmaliuk-a076a5300/" target="_blank" class="social-link">> LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- Contact Modal -->
+  <div class="modal" id="contact-modal">
+    <div class="modal-window window" style="max-width: 500px;">
+      <div class="window-header">
+        <span class="window-title">Contact.exe</span>
+        <button class="close-modal terminal-btn" data-target="contact-modal">[ X ]</button>
+      </div>
+      <div class="window-content">
+        <p class="terminal-text" style="margin-bottom: 1.5rem;" data-i18n="contact_msg">> Establishing connection...</p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+           <li><a href="mailto:yumediawork@gmail.com" class="social-link terminal-text" style="font-size: 1.2rem;">> Email: yumediawork@gmail.com</a></li>
+           <li><a href="https://t.me/verrgill" target="_blank" class="social-link terminal-text" style="font-size: 1.2rem;">> Telegram: @verrgill</a></li>
+           <li><a href="https://www.linkedin.com/in/yurii-shmaliuk-a076a5300/" target="_blank" class="social-link terminal-text" style="font-size: 1.2rem;">> LinkedIn: Yurii Shmaliuk</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Modal Lightbox -->
+  <div class="modal" id="project-modal">
+    <div class="modal-window window">
+      <div class="window-header">
+        <span class="window-title" id="modal-title">Project.exe</span>
+        <button class="close-modal terminal-btn" data-target="project-modal">[ X ]</button>
+      </div>
+      <div class="window-content" id="modal-content">
+        <!-- Dynamic content (iframe/images) -->
+      </div>
+      <div class="window-footer" id="modal-footer">
+          <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
