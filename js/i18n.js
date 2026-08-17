@@ -9,13 +9,14 @@ const translations = {
         slider_hint: "< Swipe to view >",
         contact_msg: "> Establishing connection...",
         skills: [
-            "UI/UX Design (Figma, Prototyping)",
-            "Graphic Design (Photoshop, Illustrator)",
+            "UX Research (Interviews, Usability Testing)",
+            "Business Analysis (Requirements, Agile)",
             "Video Editing (Premiere Pro, DaVinci Resolve)",
             "Motion Design (After Effects)",
-            "SMM & Copywriting",
-            "AI & Automation",
-            "Team Collaboration & Task Management"
+            "Graphic Design (Photoshop, Illustrator)",
+            "SMM, Copywriting & Crisis Management",
+            "No-code Automation (n8n)",
+            "Team & Client Management"
         ],
         lbl_desc: "Description:",
         lbl_stack: "Stack:",
@@ -31,13 +32,14 @@ const translations = {
         slider_hint: "< Гортайте для перегляду >",
         contact_msg: "> Встановлення з'єднання...",
         skills: [
-            "UI/UX Дизайн (Figma, Прототипування)",
-            "Графічний дизайн (Photoshop, Illustrator)",
+            "UX-дослідження (Інтерв'ю, Юзабіліті-тестування)",
+            "Бізнес-аналіз (Вимоги, Agile)",
             "Монтаж відео (Premiere Pro, DaVinci Resolve)",
             "Моушн дизайн (After Effects)",
-            "SMM та Копірайтинг",
-            "ШІ та Автоматизація",
-            "Командна робота та Управління задачами"
+            "Графічний дизайн (Photoshop, Illustrator)",
+            "SMM, Копірайтинг та Кризовий менеджмент",
+            "No-code автоматизація (n8n)",
+            "Командний та клієнтський менеджмент"
         ],
         lbl_desc: "Опис:",
         lbl_stack: "Стек:",
