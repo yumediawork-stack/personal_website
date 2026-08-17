@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#050505"/>
+  <rect x="8" y="8" width="624" height="344" fill="#111111" stroke="#333333" stroke-width="2"/>
+  <rect x="8" y="8" width="624" height="34" fill="#222222" stroke="#333333" stroke-width="2"/>
+  <circle cx="26" cy="25" r="5" fill="#39FF14" opacity="0.5"/>
+  <circle cx="44" cy="25" r="5" fill="#666666"/>
+  <circle cx="62" cy="25" r="5" fill="#666666"/>
+  <text x="320" y="30" font-family="monospace" font-size="13" fill="#888888" text-anchor="middle">Energoresurs.exe</text>
+  <text x="320" y="180" font-family="monospace" font-weight="bold" font-size="40" fill="#39FF14" text-anchor="middle" opacity="0.9">▶</text>
+  <text x="320" y="250" font-family="monospace" font-size="20" fill="#e8e8e8" text-anchor="middle">Energoresurs_Video</text>
+  <text x="320" y="280" font-family="monospace" font-size="13" fill="#666666" text-anchor="middle">Freelance — Industrial Client</text>
+</svg>
