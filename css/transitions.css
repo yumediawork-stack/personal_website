@@ -1,0 +1,110 @@
+/* Module Switch — page transition overlay (driven by js/transitions.js).
+   Reuses the site window system: --bg/--window/--border vars, Space Mono, hard shadows. */
+
+.module-switch {
+  position: fixed;
+  inset: 0;
+  /* above scanlines (9999), sticky header (100) and modals (1000) */
+  z-index: 12000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* opaque surface in the current theme color */
+  background: var(--bg-color);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* used when the entrance cover fades out */
+  transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 260ms;
+}
+
+.module-switch .module-console {
+  width: min(560px, calc(100vw - 48px));
+  margin: 0;
+}
+
+/* A short eased cover, followed immediately by native navigation. */
+.module-switch.enabled {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* while a cover is up, freeze the page and remove its scrollbar so the
+   overlay truly covers everything */
+html[data-switch-in],
+html[data-switch-lock] {
+  overflow: hidden;
+}
+
+/* entrance cover: opaque from the very first frame (head bootstrap sets this) */
+html[data-switch-in] .module-switch {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: none;
+}
+
+/* gentle console settle: 6px down-shift on appearance */
+.module-switch.enabled .module-console,
+html[data-switch-in] .module-console {
+  animation: module-enter 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes module-enter {
+  from { transform: translateY(3px); }
+  to   { transform: translateY(0); }
+}
+
+/* Gentle stagger within the cover duration; no extra wait for completion. */
+.module-segments {
+  display: flex;
+  gap: 3px;
+  margin: 0.75rem 0;
+}
+.module-segments i {
+  width: 24px;
+  height: 10px;
+  border: 1px solid var(--accent-color);
+  background: transparent;
+}
+.module-switch.enabled .module-segments i,
+html[data-switch-in] .module-segments i,
+.module-switch.fading .module-segments i {
+  animation: segment-lit 100ms linear forwards;
+}
+.module-switch .module-segments i:nth-child(2) { animation-delay: 24ms; }
+.module-switch .module-segments i:nth-child(3) { animation-delay: 48ms; }
+.module-switch .module-segments i:nth-child(4) { animation-delay: 72ms; }
+.module-switch .module-segments i:nth-child(5) { animation-delay: 96ms; }
+.module-switch .module-segments i:nth-child(6) { animation-delay: 120ms; }
+.module-switch .module-segments i:nth-child(7) { animation-delay: 144ms; }
+.module-switch .module-segments i:nth-child(8) { animation-delay: 168ms; }
+@keyframes segment-lit {
+  0%   { background: transparent; }
+  2%   { background: var(--accent-color); }
+  100% { background: var(--accent-color); }
+}
+
+.module-command {
+  display: block;
+  color: var(--accent-color);
+}
+
+.module-status {
+  display: block;
+}
+/* the cursor is the only orange detail of the splash */
+.module-cursor {
+  color: var(--accent-alt);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .module-switch {
+    display: none !important;
+  }
+  .module-switch .module-console,
+  .module-switch .module-console * {
+    animation: none !important;
+  }
+}
