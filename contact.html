@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // Module Switch early bootstrap: theme/lang before first paint + one-shot entry splash
+    try {
+      var html = document.documentElement;
+      var q = new URLSearchParams(window.location.search);
+      var theme = q.get('theme');
+      if (theme !== 'dark' && theme !== 'light') { try { theme = window.localStorage.getItem('site_theme'); } catch (e1) {} }
+      if (theme !== 'dark' && theme !== 'light') theme = 'dark';
+      var lang = q.get('lang');
+      if (lang !== 'uk' && lang !== 'en') { try { lang = window.localStorage.getItem('site_lang'); } catch (e2) {} }
+      if (lang !== 'uk' && lang !== 'en') lang = 'en';
+      html.setAttribute('data-theme', theme);
+      html.setAttribute('lang', lang);
+      var reduced = false;
+      try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e3) {}
+      var marker = null;
+      try { marker = JSON.parse(window.sessionStorage.getItem('yurii_nav') || 'null'); } catch (e4) {}
+      function _yuriiCanon(s) { return s && s.length > 1 ? s.slice(1).split('&').sort().join('&') : ''; }
+      if (marker && !reduced && marker.p === window.location.pathname
+          && marker.q === _yuriiCanon(window.location.search) && (Date.now() - (marker.ts || 0)) < 8000) {
+        try { window.sessionStorage.removeItem('yurii_nav'); } catch (e5) {}
+        html.setAttribute('data-switch-in', '');
+        window.__yuriiSplash = { since: Date.now() };
+        // independent emergency un-cover: works even if transitions.js never loads/runs
+        window.setTimeout(function () {
+          document.documentElement.removeAttribute('data-switch-in');
+          document.documentElement.removeAttribute('data-switch-lock');
+        }, 1200);
+      }
+    } catch (bootErr) { /* transitions stay off: plain navigation keeps working */ }
+  </script>
+  <title>Contact | Yurii Shmaliuk</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/transitions.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Anton&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Module Switch transition overlay (shown by js/transitions.js) -->
+  <div class="module-switch" id="module-switch">
+    <div class="module-console window">
+      <div class="window-header" aria-hidden="true">
+        <span class="window-title">YURII.EXE / MODULE SWITCH</span>
+        <div class="window-controls">
+          <span class="control close"></span>
+          <span class="control min"></span>
+          <span class="control max"></span>
+        </div>
+      </div>
+      <div class="window-content">
+        <span class="module-command terminal-text" id="module-command" aria-hidden="true">&gt; open contact.exe</span>
+        <div class="module-segments" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="module-status terminal-text" role="status"><span id="module-status-text" data-uk-status="Переходимо до контактів…">Opening contacts…</span><span class="module-cursor" aria-hidden="true">█</span></span>
+      </div>
+    </div>
+  </div>
+  <script>(function(){if(document.documentElement.getAttribute('lang')==='uk'){var s=document.getElementById('module-status-text');if(s&&s.getAttribute('data-uk-status'))s.textContent=s.getAttribute('data-uk-status');}})();</script>
+
+  <canvas id="matrix-bg"></canvas>
+  <div class="scanlines"></div>
+
+  <header class="retro-header">
+    <a href="index.html" class="logo">Yurii.exe</a>
+    <button type="button" id="nav-toggle" class="nav-toggle terminal-btn" aria-expanded="false" aria-controls="site-nav" data-i18n="nav_menu">[ Menu ]</button>
+    <nav class="retro-nav" id="site-nav" aria-label="Main navigation" data-i18n-aria="nav_aria">
+      <a href="index.html" class="nav-link" data-i18n="nav_home">[ Home ]</a>
+      <a href="studio.html" class="nav-link" data-i18n="nav_studio">[ Studio ]</a>
+      <a href="media.html" class="nav-link" data-i18n="nav_media">[ Media ]</a>
+      <a href="projects.html" class="nav-link" data-i18n="nav_projects">[ Projects ]</a>
+      <a href="contact.html" class="nav-link" aria-current="page" data-i18n="nav_contact">[ Contact ]</a>
+      <button id="theme-toggle" class="terminal-btn" type="button">[ Theme: Dark ]</button>
+      <button id="lang-toggle" class="terminal-btn" type="button">[ EN ]</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Contact hero -->
+    <section class="window page-hero">
+      <div class="window-header">
+        <span class="window-title">contact.exe</span>
+        <div class="window-controls">
+          <span class="control close"></span>
+          <span class="control min"></span>
+          <span class="control max"></span>
+        </div>
+      </div>
+      <div class="window-content">
+        <h1 class="editorial-title" data-i18n="contact_hero_title">Contact</h1>
+        <p class="terminal-text" data-i18n="contact_hero_lead"></p>
+        <div class="page-actions">
+          <a id="contact-main-email" href="mailto:yumediawork@gmail.com" class="btn primary" data-i18n="contact_btn_write"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics -->
+    <section class="section-block">
+      <h2 class="section-title" data-i18n="contact_topics_title">Topics</h2>
+      <p class="page-caption terminal-text small">contact.topics</p>
+      <div class="topic-grid">
+        <article class="topic-card window" data-topic="client">
+          <div class="window-header"><span class="window-title">topic.client</span></div>
+          <div class="window-content">
+            <h3 class="media-title" data-i18n="topic_client_title"></h3>
+            <p class="terminal-text small" data-i18n="topic_client_desc"></p>
+            <a class="btn secondary js-mailto" data-topic="client" href="mailto:yumediawork@gmail.com?subject=Client%20project" data-i18n="topic_write"></a>
+          </div>
+        </article>
+        <article class="topic-card window" data-topic="media">
+          <div class="window-header"><span class="window-title">topic.media</span></div>
+          <div class="window-content">
+            <h3 class="media-title" data-i18n="topic_media_title"></h3>
+            <p class="terminal-text small" data-i18n="topic_media_desc"></p>
+            <a class="btn secondary js-mailto" data-topic="media" href="mailto:yumediawork@gmail.com?subject=Media%20partnership" data-i18n="topic_write"></a>
+          </div>
+        </article>
+        <article class="topic-card window" data-topic="experiment">
+          <div class="window-header"><span class="window-title">topic.experiment</span></div>
+          <div class="window-content">
+            <h3 class="media-title" data-i18n="topic_experiment_title"></h3>
+            <p class="terminal-text small" data-i18n="topic_experiment_desc"></p>
+            <a class="btn secondary js-mailto" data-topic="experiment" href="mailto:yumediawork@gmail.com?subject=Joint%20experiment" data-i18n="topic_write"></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Channels -->
+    <section class="section-block">
+      <h2 class="section-title" data-i18n="contact_channels_title">Channels</h2>
+      <div class="window">
+        <div class="window-header"><span class="window-title">Network.Connections</span></div>
+        <div class="window-content contact-info align-start">
+          <a href="mailto:yumediawork@gmail.com" class="social-link" data-i18n="contacts_link_email">> Email</a>
+          <a href="https://t.me/verrgill" target="_blank" rel="noopener noreferrer" class="social-link" data-i18n="contacts_link_telegram">> Telegram</a>
+          <a href="https://www.linkedin.com/in/yurii-shmaliuk-a076a5300/" target="_blank" rel="noopener noreferrer" class="social-link" data-i18n="contacts_link_linkedin">> LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Minimal footer: no duplicate contact list on the contact page -->
+  <footer class="retro-footer window">
+    <div class="window-header"><span class="window-title">yurii.exe</span></div>
+    <div class="window-content">
+      <a href="index.html" class="social-link" data-i18n="nav_home">[ Home ]</a>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/transitions.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
